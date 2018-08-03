@@ -1,22 +1,43 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "name": "Readit",
+  "version": "1.1.0",
+  "description": "Master Electron Course Project",
   "main": "main.js",
+  "author": "Yan Campos",
+  "homepage": "https://accesso.udemy.com/master-electron",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "mac": "electron-builder",
+    "win": "electron-builder -w",
+    "build": "electron-builder -wl",
+    "make-cert": "electron-builder create-self-signed-cert -p stackacademy"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "build": {
+    "appId": "com.stackacademy.readit",
+    "directories": {
+      "buildResources": "."
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": "dmg"
+    },
+    "win": {
+      "certificateFile": "private/stackacademy.pfx",
+      "verifyUpdateCodeSignature": false,
+      "publisherName": "stackacademy"
+    },
+    "linux": {
+      "category": "Network"
+    }
+  },
+  "dependencies": {
+    "bcrypt": "^2.0.1",
+    "electron-reload": "^1.2.2",
+    "electron-window-state": "^4.1.1",
+    "jquery": "^3.3.1",
+    "query-string": "^6.1.0"
+  },
   "devDependencies": {
-    "electron": "^2.0.0"
+    "electron-builder": "^20.26.1"
   }
 }
